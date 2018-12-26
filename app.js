@@ -29,7 +29,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // Routes Init
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

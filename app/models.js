@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var beautifyUnique = require("mongoose-beautiful-unique-validation");
 mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true });
 
-var users = require('./db/users');
+var users = require('./models/users');
 
 users.plugin(beautifyUnique);
 
