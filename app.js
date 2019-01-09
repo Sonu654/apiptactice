@@ -21,8 +21,8 @@ app.use(cors());
 app.options('*', cors());
 
 // File Upload Limits
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({limit: '128mb'}));
+app.use(bodyParser.urlencoded({limit: '128mb', extended: true}));
 
 // Routes Init
 app.use('/', require('./routes'));
