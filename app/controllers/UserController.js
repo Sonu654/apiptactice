@@ -25,9 +25,9 @@ var methods = {
    * Sample Request to Issue JWT token for Users API
    * @group Users
    * @route POST /user/issuejwt
-   * @param {string} username.required - username
-   * @param {string} email.required - email
-   * @param {string} role.required - role
+   * @param {string} username.query.required - username for user
+   * @param {string} email.query.required - email address of the user
+   * @param {string} role.query.required - authorization role of the user
    */
   IssueJWT: function (req, res) {
     try {
@@ -54,9 +54,9 @@ var methods = {
   /** 
    * Sample Request for Verification of the JWT Token
    * @group Users
-   * @route POST /user/verifyjwt
-   * @param {string} email.query.required - email
-   * @param {string} password.query.required - password
+   * @route POST /user/verifyjwt/{email}
+   * @param {string} email.query.required - email address of the user
+   * @param {string} password.query.required - password of the user
    * @security JWT
    */
   VerifyJWT: function (req, res) {
