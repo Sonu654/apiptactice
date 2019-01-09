@@ -5,12 +5,12 @@ mongoose.connect(process.env.MONGO_URL,{
   useCreateIndex: true
 });
 
-var users = require('./models/users');
+var user = require('./models/user');
 
 users.plugin(beautifyUnique);
 
 var database = {
-  "users": mongoose.model("users", users),
+  "user": mongoose.model("user", user),
 }
 
 module.exports = database;
