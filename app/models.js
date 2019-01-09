@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGO_URL,{
 
 var user = require('./models/user');
 
-users.plugin(beautifyUnique);
+user.plugin(beautifyUnique);
 
 var database = {
   "user": mongoose.model("user", user),
