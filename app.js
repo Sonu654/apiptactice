@@ -9,6 +9,36 @@ var dotenv = require('dotenv').config()
 
 var app = express();
 
+// Swagger Init
+const expressSwagger = require('express-swagger-generator')(app);
+expressSwagger({
+  swaggerDefinition: {
+    info: {
+      title: process.env.SWAGGER_TITLE,
+      description: process.env.SWAGGER_DESCRIPTION,
+      version: process.env.SWAGGER_VERSION,
+    },
+    host: process.env.SWAGGER_API_HOST,
+    consumes: [
+      "application/json"
+    ],
+    produces: [
+      "application/json"
+    ],
+    schemes: ['http', 'https'],
+    securityDefinitions: {
+      JWT: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Authorization',
+        description: "Authentication Token for NodeJS API Boilerplate",
+      }
+    }
+  },
+  basedir: __dirname, //app absolute path
+  files: ['./app/controllers/*.js'] //Path to the API handle folder
+});
+
 // Express Settings
 app.use(logger('combined'));
 app.use(express.json());
@@ -21,8 +51,8 @@ app.use(cors());
 app.options('*', cors());
 
 // File Upload Limits
-app.use(bodyParser.json({limit: '128mb'}));
-app.use(bodyParser.urlencoded({limit: '128mb', extended: true}));
+app.use(bodyParser.json({ limit: '128mb' }));
+app.use(bodyParser.urlencoded({ limit: '128mb', extended: true }));
 
 // Routes Init
 app.use('/', require('./routes'));

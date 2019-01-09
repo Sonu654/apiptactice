@@ -1,12 +1,12 @@
 var user = {
   message: {
     success: {
-      success: "Login Successful",
+      userwelcome: "Hello from NodeJS API Boilerplate",
+      issuejwt: "JWT Token issued successfully",
+      verifyjwt: "JWT Token verified successfully"
     },
     error: {
-      error: "Login Failed. Please Try Again",
-      password: "User found, Credentials Mismatch",
-      email: "User not found, Please try again"
+      verifyjwt: "JWT Token cannot be verified"
     }
   },
   emails: {
