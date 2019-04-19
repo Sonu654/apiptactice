@@ -1,6 +1,7 @@
 var lang = require('../lang');
 var models = require('../models');
 var helpers = require('../helpers');
+import User from "../models/user";
 
 var methods = {
   /**
