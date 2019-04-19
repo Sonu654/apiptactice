@@ -78,7 +78,11 @@ var methods = {
         message: err.message
       });
     }
-  }
+  },
+
+ getUser:(req,res)=>{
+  console.log(req,res,"req res");
+ }
 }
 
 module.exports = methods;

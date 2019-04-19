@@ -11,5 +11,5 @@ var controllers = require('./app/controllers');
 router.get('/', controllers.UserController.UserWelcome);
 router.post('/user/issuejwt', controllers.UserController.IssueJWT);
 router.post('/user/verifyjwt', controllers.UserController.VerifyJWT);
-
+router.get("/user/getUser/:userName",controllers.UserController.getUser);
 module.exports = router;
