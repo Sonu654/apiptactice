@@ -1,8 +1,7 @@
-var mongoose = require('mongoose');
-var schemaValidator = require('./validator/schemaValidator');
-var Mixed = mongoose.Schema.Types.Mixed;
+import mongoose, { Schema } from "mongoose";
+var schemaValidator = require("./validator/schemaValidator");
 
-const collectionSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   firstname: {
     type: String,
     required: true,
@@ -30,34 +29,37 @@ const collectionSchema = new mongoose.Schema({
     required: true,
     validate: schemaValidator.passwordValidator
   },
-  address: {
+  token: {
     type: String,
     required: true
   },
+  address: {
+    type: String,
+    required: false
+  },
   city: {
     type: String,
-    required: true,
+    required: false,
     validate: schemaValidator.isAlphaNumericValidator
   },
   state: {
     type: String,
-    required: true,
+    required: false,
     validate: schemaValidator.isAlphaNumericValidator
   },
   country: {
     type: String,
-    required: true,
+    required: false,
     validate: schemaValidator.isAlphaNumericValidator
   },
   postal_code: {
     type: String,
-    required: true,
+    required: false,
     validate: schemaValidator.postalCodeValidator
   },
   phone_number: {
     type: String,
-    required: true,
-    unique: "User with Phone Number `{VALUE}` already present",
+    required: false,
     validate: schemaValidator.phoneNumberValidator
   },
   role: {
@@ -84,4 +86,4 @@ const collectionSchema = new mongoose.Schema({
   }
 });
 
-module.exports = collectionSchema;
+export default mongoose.model("user", UserSchema);
