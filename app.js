@@ -1,11 +1,13 @@
 var createError = require("http-errors");
 var express = require("express");
+import mongoose from "mongoose";
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
+
 import Routes from "./app/routes";
 var app = express();
 
@@ -32,8 +34,16 @@ expressSwagger({
     }
   },
   basedir: __dirname, //app absolute path
-  files: ["./app/controllers/*.js"] //Path to the API handle folder
+  files: ["./app/routes/*.js"] //Path to the API handle folder
 });
+
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
+  .then(res => console.log("mongoose=======connection", res))
+  .catch(e => console.warn("mongoose error", e));
 
 // Express Settings
 app.use(logger("combined"));

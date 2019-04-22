@@ -7,7 +7,7 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true
   })
-  .then(res => console.log("mongoose", res))
+  .then(res => console.log("mongoose=======connection", res))
   .catch(e => console.warn("mongoose error", e));
 
 // var user = require('./models/user');
@@ -17,7 +17,6 @@ mongoose
 // var database = {
 //   "user": mongoose.model("user", user),
 // }
-
 // module.exports = database;
 export default {
   User
