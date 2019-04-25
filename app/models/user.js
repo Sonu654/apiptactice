@@ -29,6 +29,10 @@ const UserSchema = new Schema({
     required: true,
     validate: schemaValidator.passwordValidator
   },
+  profileImage: {
+    type: String,
+    default:""
+  },
   token: {
     type: String,
     required: true
@@ -43,18 +47,15 @@ const UserSchema = new Schema({
   },
   city: {
     type: String,
-    required: false,
-    validate: schemaValidator.isAlphaNumericValidator
+    required: false
   },
   state: {
     type: String,
-    required: false,
-    validate: schemaValidator.isAlphaNumericValidator
+    required: false
   },
   country: {
     type: String,
-    required: false,
-    validate: schemaValidator.isAlphaNumericValidator
+    required: false
   },
   postal_code: {
     type: String,

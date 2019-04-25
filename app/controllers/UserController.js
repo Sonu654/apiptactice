@@ -3,7 +3,6 @@ var helpers = require("../helpers");
 import User from "../models/user";
 
 export const registerUser = (req, res) => {
-  console.log("ressss===>", req.body);
   let { email, username } = req.body;
   User.findOne({ email })
     .then(result => {
@@ -11,7 +10,6 @@ export const registerUser = (req, res) => {
         User.findOne({ username }).then(result => {
           if (!result) {
             try {
-              console.log("issue Tokens stat");
               var issueToken = helpers.issueJWT({
                 email: req.body.email,
                 role: req.body.role || "user"

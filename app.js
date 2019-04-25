@@ -42,7 +42,7 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true
   })
-  .then(res => console.log("mongoose=======connection", res))
+  .then(res => console.log("mongoose=======connection"))
   .catch(e => console.warn("mongoose error", e));
 
 // Express Settings

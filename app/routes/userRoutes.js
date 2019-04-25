@@ -1,4 +1,6 @@
 import * as Controllers from "../controllers";
+import * as helpers from "../helpers";
+
 //     ____              __
 //    / __ \____  __  __/ /____  _____
 //   / /_/ / __ \/ / / / __/ _ \/ ___/
@@ -43,5 +45,10 @@ export default app => {
 
   app.get("/users/verifyAccount/:token", Controllers.verifyAccount);
 
-  // app.post("/user/signin", Controllers.validateUserToken, Controllers.signin);
+  app.post(
+    "/user/profileImage",
+    Controllers.validateUserToken,
+    Controllers.upload.single("image"),
+    Controllers.updateUserImage
+  );
 };

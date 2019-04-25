@@ -11,9 +11,18 @@ export const issueJWT = payload => {
 };
 
 export const verifyJWT = token => {
-  var verify = jsonwebtoken.verify(token, process.env.JWT_KEY, {
-    audience: process.env.JWT_AUDIENCE
+  return new Promise((resolve, reject) => {
+    try {
+      var verify = jsonwebtoken.verify(token, process.env.JWT_KEY, {
+        audience: process.env.JWT_AUDIENCE
+      });
+      resolve(verify);
+    } catch (error) {
+      reject({
+        name: error.name,
+        message: error.message,
+        expiredAt: error.expiredAt
+      });
+    }
   });
-
-  return verify;
 };
