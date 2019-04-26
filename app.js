@@ -74,6 +74,8 @@ app.get("/", (req, res) => res.send(`<h1>Tutable app ${env} environment</h1>`));
 const port = process.env.NODE_ENV === "development" ? 3003 : 3002;
 
 app.listen(port, () => console.log(`Backend is running on port ${port}`));
+app.listen(3000,"172.24.7.151",()=>console.log("Backend is running on port 172.24.7.151:3000"))
+
 // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
 //   next(createError(404));
