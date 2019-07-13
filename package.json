@@ -20,7 +20,7 @@
     "http-errors": "^1.7.2",
     "install": "^0.12.2",
     "jsonwebtoken": "^8.4.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "mongodb": "^3.1.10",
     "mongoose": "^5.4.0",
     "mongoose-beautiful-unique-validation": "^7.1.1",
