@@ -1,7 +1,8 @@
 var lang = require("../lang");
 var helpers = require("../helpers");
-import User from "../models/user";
+var ip = require('ip');
 
+import User from "../models/user";
 export const registerUser = (req, res) => {
   let { email, username } = req.body;
   User.findOne({ email })
@@ -20,13 +21,13 @@ export const registerUser = (req, res) => {
                 email: req.body.email,
                 verificationCode
               });
-              let verificationLink = `<b>Please follow following link to activate your account.</b> <a href="${
-                process.env.BASE_URL
+              let verificationLink = `<b>Please follow following link to activate your account.</b> <a href="http://${
+                ip.address()
               }:${
                 process.env.PORT
               }/users/verifyAccount/${verifyToken}">Click Here to verify</a>`;
               helpers.sendMail({
-                from: '"Api Test " <tristin97@ethereal.email>', // sender address
+                from: '"Api Test " <sonusanwal65@gmail.com>', // sender address
                 to: email, // list of receivers
                 subject: "Verification Email Test Server 👻", // Subject line
                 html: verificationLink

@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
-
+var ip = require('ip');
 import Routes from "./app/routes";
 var app = express();
 
@@ -50,7 +50,7 @@ app.use(logger("combined"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
 // CORS Addtiion
 app.use(cors());
@@ -62,31 +62,13 @@ app.use(bodyParser.urlencoded({ limit: "128mb", extended: true }));
 
 // Routes Init
 Routes(app);
-
-const env = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
-/**
- * Sample Request to Tutoriasl app
- * @group Users
- * @route GET /api/
- */
-app.get("/", (req, res) => res.send(`<h1>Tutable app ${env} environment</h1>`));
-
+app.get("/",(req,res)=>{
+  res.send(`<div><h1>Api Server</h1><h2>@author Suraj Sanwal</h2><h3>Documentation Link <a href='http://${systemIP}:${port}/api-docs'>Api Docs</a></h3></div>`);
+})
+const systemIP=ip.address();
 const port = process.env.NODE_ENV === "development" ? 3003 : 3002;
 
-app.listen(port, () => console.log(`Backend is running on port ${port}`));
-app.listen(3000,"172.24.7.151",()=>console.log("Backend is running on port 172.24.7.151:3000"))
+app.listen(port, () => console.log(`Backend is running on port http://localhost:${port}`));
+app.listen(port,systemIP,()=>console.log(`Backend is running on port http://${systemIP}:${port}`))
 
-// catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   next(createError(404));
-// });
 
-// // error handler
-// app.use(function (err, req, res, next) {
-//   res.status(err.status || 500).send({
-//     status: err.status,
-//     message: err.message
-//   });
-// });
-
-// module.exports = app;
